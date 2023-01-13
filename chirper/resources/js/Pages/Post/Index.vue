@@ -1,5 +1,5 @@
 <template>
-<div class="w-96 mx-auto pt-8">
+
     <h1 class="text-lg mb-8">Posts</h1>
     <div class="mb-8">
         <Link :href="route('post.create')" class="hover:bg-white hover:text-sky-500 bg-sky-500 border border-sky-500 p-2 w-32 block rounded-full text-center ">Add Posts</Link>
@@ -10,15 +10,18 @@
             <div>title: {{post.title}}</div>
             <div>content: {{post.content}}</div>
             <div class="text-sm text-right">{{post.date}}</div>
+            <div class="text-sm text-right"><Link class="text-sky-500" :href="route('post.show', post.id)">Show</Link></div>
         </div>
     </div>
-</div>
+
 </template>
 
 <script>
 import {Link} from "@inertiajs/inertia-vue3";
+import MainLayout from "@/Layouts/MainLayout.vue";
 export default {
     name: "Index",
+    layout: MainLayout,
     props: [
         'posts',
     ],

@@ -16,6 +16,10 @@ class PostController extends Controller
         $posts = PostResource::collection($posts)->resolve();
         return inertia('Post/Index', compact('posts'));
     }
+    public function show(Post $post)
+    {
+        return inertia('Post/Show', compact('post'));
+    }
     public function create()
     {
         return inertia('Post/Create');
