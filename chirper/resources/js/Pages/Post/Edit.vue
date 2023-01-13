@@ -33,6 +33,7 @@ export default {
     },
     data(){
         return {
+            id: this.post.id,
             title: this.post.title,
             content: this.post.content,
         }
@@ -40,7 +41,7 @@ export default {
     methods: {
         update()
         {
-            this.$inertia.patch('/posts', {title: this.title, content: this.content});
+            this.$inertia.patch(`/posts/${this.id}`, {title: this.title, content: this.content});
         }
     }
 }
