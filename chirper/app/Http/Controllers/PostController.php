@@ -29,4 +29,8 @@ class PostController extends Controller
         Post::create($request->validated());
         return redirect()->route('post.index');
     }
+    public function edit(Post $post)
+    {
+        return inertia('Post/Edit', compact('post'));
+    }
 }

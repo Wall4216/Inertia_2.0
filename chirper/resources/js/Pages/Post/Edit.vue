@@ -1,0 +1,51 @@
+<template>
+
+    <h1 class="text-lg mb-8">Edit</h1>
+    <div class="mb-2">
+    <Link :href="route('post.index')"  class="text-sky-500 text-sm mb-8">Back</Link>
+</div>
+    <form @submit.prevent="update">
+        <div class="mb-4">
+            <input v-model="title" class="w-full rounded-full border-gray-300" type="text" placeholder="title">
+        </div>
+
+        <div class="mb-4">
+            <textarea v-model="content" class="w-full rounded-full border-gray-300" placeholder="content"></textarea>
+        </div>
+        <div>
+            <button class="ml-auto hover:bg-white hover:350 bg-sky-500 border border-sky-500 p-2 w-32 block rounded-full text-center" type="submit">Update</button>
+        </div>
+    </form>
+
+</template>
+
+<script>
+import {Link} from "@inertiajs/inertia-vue3";
+import MainLayout from "@/Layouts/MainLayout.vue";
+export default {
+    name: "Index",
+    layout: MainLayout,
+    props: [
+        'post'
+    ],
+    components: {
+        Link
+    },
+    data(){
+        return {
+            title: this.post.title,
+            content: this.post.content,
+        }
+    },
+    methods: {
+        update()
+        {
+            this.$inertia.patch('/posts', {title: this.title, content: this.content});
+        }
+    }
+}
+</script>
+
+<style scoped>
+
+</style>

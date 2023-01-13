@@ -11,6 +11,7 @@
             <div>content: {{post.content}}</div>
             <div class="text-sm text-right">{{post.date}}</div>
             <div class="text-sm text-right"><Link class="text-sky-500" :href="route('post.show', post.id)">Show</Link></div>
+            <div class="text-sm text-right"><Link class="text-sky-500" :href="route('post.edit', post.id)">Update</Link></div>
         </div>
     </div>
 
